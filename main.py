@@ -7,6 +7,7 @@ from sklearn.preprocessing import OrdinalEncoder
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
+from sklearn.metrics import classification_report
 
 
 data = pd.read_csv("csgo.csv")
@@ -65,3 +66,5 @@ y_predict = clf.predict(x_test)
 
 for i, j in zip(y_test, y_predict):
     print("Actual {}. Predict {}".format(i, j))
+
+print(classification_report(y_test, y_predict))
