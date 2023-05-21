@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm
 
 from sklearn.model_selection import train_test_split
@@ -59,7 +60,7 @@ preprocessor = ColumnTransformer(
 )
 
 clf = Pipeline(
-    steps=[("preprocessor", preprocessor), ("clf", svm.SVC())]
+    steps=[("preprocessor", preprocessor), ("clf", RandomForestClassifier(max_depth=2, random_state=0))]
 )
 
 clf.fit(x_train, y_train)
