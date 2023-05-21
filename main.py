@@ -1,6 +1,8 @@
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.linear_model import LogisticRegression
+from sklearn import svm
+
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import OrdinalEncoder
@@ -57,7 +59,7 @@ preprocessor = ColumnTransformer(
 )
 
 clf = Pipeline(
-    steps=[("preprocessor", preprocessor), ("classifier", LogisticRegression())]
+    steps=[("preprocessor", preprocessor), ("clf", svm.SVC())]
 )
 
 clf.fit(x_train, y_train)
